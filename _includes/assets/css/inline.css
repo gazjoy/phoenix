@@ -164,7 +164,7 @@ form {
 }
 
 form label {
-  display: none;
+  margin-bottom: 5px;
 }
 
 input,
