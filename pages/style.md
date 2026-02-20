@@ -1,12 +1,12 @@
 ---
-title: Style
+title: List of Styled elements
 metaDescription: Style
 permalink: /style/index.html
 eleventyNavigation:
   key: Style
 ---
 
-# Heading 1
+Automatically styled lead paragraph, placed as an after sibling of a <h1> tag.
 
 Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
 
@@ -88,8 +88,6 @@ Syntax
 
 ## Links
 
-Inline
-My favorite search engine is [Duck Duck Go](https://duckduckgo.com).
+**Inline** – My favorite search engine is [Duck Duck Go](https://duckduckgo.com).
 
-Link to heading anchor
-[Link to heading 1](#heading-1)
+**Link to heading anchor** – [Link to heading 1](#heading-1)
