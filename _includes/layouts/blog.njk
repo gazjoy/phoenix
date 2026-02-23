@@ -7,5 +7,10 @@ permalink: /blog/index.html
 
 {{ content | safe }}
 
+<h2>WP posts</h2>
+{% include "components/wp_postslist.njk" %}
+
 {% set postslist = collections.post %}
+
+<h2>Eleventy posts</h2>
 {% include "components/postslist.njk" %}
