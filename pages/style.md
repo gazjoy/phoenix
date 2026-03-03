@@ -4,6 +4,7 @@ metaDescription: Style
 permalink: /style/index.html
 eleventyNavigation:
   key: Style
+layout: layouts/page.njk
 ---
 
 Automatically styled lead paragraph, placed as an after sibling of a <h1> tag.

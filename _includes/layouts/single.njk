@@ -1,7 +1,13 @@
 ---
 layout: layouts/base.njk
 section: blog
-permalink: /blog/index.html
+pagination:
+  data: posts
+  size: 1
+  alias: post
+permalink: "/blog/{{ post.slug }}/"
+eleventyComputed:
+  title: "{{ post.title.rendered }}"
 ---
 <h1>{{ title }}</h1>
 
@@ -10,7 +16,3 @@ permalink: /blog/index.html
 <h2>WP posts</h2>
 {% include "components/wp_postslist.njk" %}
 
-{% set postslist = collections.post %}
-
-<h2>Eleventy posts</h2>
-{% include "components/postslist.njk" %}
