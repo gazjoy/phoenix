@@ -1,0 +1,20 @@
+---
+pagination:
+  data: contentful
+  size: 1
+  alias: page
+  addAllPagesToCollections: true
+permalink: "/contentful/{{ page.title | slug }}/"
+tags: "page"
+layout: layouts/base.njk
+
+eleventyComputed:
+  title: "{{ page.title}}"
+
+---
+
+<h1>
+  {{ page.title }}
+</h1>
+
+{{ page.pageContent }}

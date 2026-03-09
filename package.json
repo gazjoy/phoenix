@@ -26,6 +26,8 @@
     "@11ty/eleventy": "^3.1.2",
     "@11ty/eleventy-navigation": "^1.0.4",
     "clean-css": "^5.3.3",
+    "contentful": "^11.10.5",
+    "dotenv": "^17.3.1",
     "html-minifier": "^4.0.0",
     "luxon": "^3.7.1",
     "markdown-it-anchor": "^9.2.0",
