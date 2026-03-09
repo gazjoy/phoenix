@@ -6,13 +6,16 @@ section: blog
 
 {{ content | safe }}
 
-
 <ol>
+  
   {%- for item in pagination.items %}
     <li>
       <a href="/blog/{{ item.slug }}/">
         {{ item.title.rendered }}</li>
     </a>
+    {% if item._embedded and item._embedded["wp:featuredmedia"] and item._embedded["wp:featuredmedia"][0] %}
+      <img src="{{ item._embedded['wp:featuredmedia'][0].source_url }}" alt="{{ item.title.rendered | striptags }}" />
+    {% endif %}
   {% endfor -%}
 </ol>
 

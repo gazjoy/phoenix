@@ -6,4 +6,16 @@ section: contact
 
 {{ content | safe }}
 
+
+<h2> Netlify form</h2>
 {% include "components/form.njk" %}
+
+
+<h2>Contact form 7</h2>
+<p>post to end point <a href="https://cannockswimmingclub.org/wp-json/contact-form-7/v1/contact-forms/1af4604/feedback">https://cannockswimmingclub.org/wp-json/contact-form-7/v1/contact-forms/1af4604/feedback</a></p>
+<form action="https://cannockswimmingclub.org/wp-json/contact-form-7/v1/contact-forms/1af4604/feedback" method="post">
+  <label for="your-name">Your Name (required)</label>
+  <input id="your-name" type="text" name="your-name">
+  <!-- Other input elements -->
+  <button type="submit">Submit</button>
+</form>

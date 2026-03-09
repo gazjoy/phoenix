@@ -11,6 +11,13 @@ eleventyComputed:
 ---
 <h1>{{ title }}</h1>
 
+
+{%- for item in pagination.items %}
+  {% if item._embedded and item._embedded["wp:featuredmedia"] and item._embedded["wp:featuredmedia"][0] %}
+    <img src="{{ item._embedded['wp:featuredmedia'][0].source_url }}" alt="{{ item.title.rendered | striptags }}" />
+  {% endif %}
+{% endfor -%}
+
 {{ content | safe }}
 
 <h2>WP posts</h2>

@@ -6,3 +6,20 @@ pagination:
   alias: post
 ---
 {{ post.content.rendered | safe }}
+
+<hr />
+{%- for item in pagination.items %}
+  {% if item._embedded and item._embedded["wp:featuredmedia"] and item._embedded["wp:featuredmedia"][0] %}
+    <img src="{{ item._embedded['wp:featuredmedia'][0].source_url }}" alt="{{ item.title.rendered | striptags }}" />
+  {% endif %}
+{% endfor -%}
+
+Nothing in your project “calls” blog-single.njk. It’s the other way around.
+
+blog-single.njk is an Eleventy input template. With your config, Eleventy’s dir.input is ".", so it picks up all supported templates in the project root (and under pages/, etc.). When Eleventy runs, it finds blog-single.njk, runs its pagination (one page per post), and for each page it uses the layout specified in that file’s front matter.
+
+So:
+
+Nothing calls blog-single.njk — Eleventy discovers it automatically as a root-level .njk file.
+blog-single.njk uses a layout — its front matter has layout: layouts/single.njk, so it “calls” (wraps with) _includes/layouts/single.njk for each generated blog post page.
+In short: blog-single.njk is an entry template that Eleventy runs; it then pulls in layouts/single.njk for the HTML wrapper.
