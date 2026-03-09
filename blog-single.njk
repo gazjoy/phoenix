@@ -1,0 +1,8 @@
+---
+layout: layouts/single.njk
+pagination:
+  data: posts
+  size: 1
+  alias: post
+---
+{{ post.content.rendered | safe }}

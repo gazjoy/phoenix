@@ -1,11 +1,9 @@
 ---
 layout: layouts/base.njk
 section: home
-latestPostsCount: 2
 pagination:
   data: posts
   size: 2
-  alias: articles
 permalink: "{% if pagination.pageNumber == 0 %}index.html{% else %}pages/home/{{ pagination.pageNumber }}/index.html{% endif %}"
 ---
 
@@ -15,7 +13,7 @@ permalink: "{% if pagination.pageNumber == 0 %}index.html{% else %}pages/home/{{
 <ol>
   {%- for item in pagination.items %}
     <li>{{ item.id }}
-      <a href="/posts/{{ item.title.rendered | slug }}">
+      <a href="/blog/{{ item.slug }}/">
         {{ item.title.rendered }}</li>
     </a>
   {% endfor -%}

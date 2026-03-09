@@ -10,7 +10,7 @@ section: blog
 <ol>
   {%- for item in pagination.items %}
     <li>
-      <a href="/posts/{{ item.title.rendered | slug }}">
+      <a href="/blog/{{ item.slug }}/">
         {{ item.title.rendered }}</li>
     </a>
   {% endfor -%}

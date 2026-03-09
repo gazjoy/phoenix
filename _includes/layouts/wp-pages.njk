@@ -1,0 +1,14 @@
+---
+pagination:
+  data: pages
+  size: 1
+  alias: page
+permalink: "/wp-pages/{{ page.slug }}/"
+eleventyComputed:
+  title: "{{ page.title.rendered }}"
+---
+
+<h1>{{ page.title.rendered | safe }}</h1>
+<div>
+  {{ page.content.rendered | safe }}
+</div>
