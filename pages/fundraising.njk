@@ -1,0 +1,48 @@
+---
+title: Fundraising
+metaDescription: Sample meta.
+permalink: fundraising/index.html
+eleventyNavigation:
+  key: Fundraising
+  order: 1
+layout: layouts/base.njk
+section: page
+tags: fundraising
+pagination:
+  data: fundraisers
+  size: 99
+---
+{% set data = pagination.items %}
+{# <script>window.data = {{ data | dump | safe }}</script> #}
+
+<h1>{{ title }}</h1>
+<h1>{{ data.title.rendered | safe }}</h1>
+
+{{ data.content.rendered | safe }}
+
+<ol>
+  {%- for item in data %}
+  <li>
+    <script>window.data = {{ item | dump | safe }}</script>
+    <h3>{{ item.acf.name }}</h3>
+    {{ item.content.rendered | safe }}
+    
+    <a href="{{ item.acf.link_to_website }}">{{ item.acf.link_to_website }}</a>
+
+    {% if item._embedded and item._embedded["wp:featuredmedia"] and item._embedded["wp:featuredmedia"][0] %}
+      <img src="{{ item._embedded['wp:featuredmedia'][0].source_url }}" alt="{{ item.title.rendered | striptags }}" />
+    {% endif %}
+    
+  </li>
+  {% endfor %}
+</ol>
+
+<!-- why is this not working? -->
+<!-- https://egghead.io/lessons/11ty-define-an-eleventy-11ty-collection-to-create-a-blog
+<ul>
+  {% for fundraiser in collections.fundraising %} 
+    <li>
+      <a href="{{ fundraiser.url }}">{{ fundraiser.data.title }}</a>
+    </li>
+  {% endfor %}
+</ul>

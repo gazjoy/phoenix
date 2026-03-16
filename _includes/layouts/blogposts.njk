@@ -1,14 +1,21 @@
 ---
 layout: layouts/base.njk
 section: blog
+permalink: "{% if pagination.pageNumber == 0 %}blog/index.html{% else %}blog/{{ pagination.pageNumber }}/index.html{% endif %}"
+pagination:
+  data: posts
+  size: 2 # how many to show before next
 ---
 <h1>{{ title }}</h1>
 
 {{ content | safe }}
 
+<script>window.data = {{ pagination | dump | safe }}</script>
+
 <ol>
   
   {%- for item in pagination.items %}
+    
     <li>
       <a href="/blog/{{ item.slug }}/">
         {{ item.title.rendered }}</li>

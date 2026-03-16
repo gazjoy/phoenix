@@ -10,11 +10,13 @@ eleventyComputed:
   title: "{{ post.title.rendered }}"
 ---
 <h1>{{ title }}</h1>
-
+{# <script>window.data = {{ pagination.items | dump | safe }}</script> #}
 
 {%- for item in pagination.items %}
+<script>window.data = {{ item._embedded | dump | safe }}</script>
   {% if item._embedded and item._embedded["wp:featuredmedia"] and item._embedded["wp:featuredmedia"][0] %}
-    <img src="{{ item._embedded['wp:featuredmedia'][0].source_url }}" alt="{{ item.title.rendered | striptags }}" />
+    <img src="{{ item._embedded['wp:featuredmedia'][0].source_url }}" alt="{{ item._embedded['wp:featuredmedia'][0].alt_text }}" />
+    <em>{{ item._embedded['wp:featuredmedia'][0].media_details.filesize }} bytes</em>
   {% endif %}
 {% endfor -%}
 
@@ -22,4 +24,5 @@ eleventyComputed:
 
 <h2>WP posts</h2>
 {% include "components/wp_postslist.njk" %}
+
 

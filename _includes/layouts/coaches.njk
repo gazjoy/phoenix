@@ -1,0 +1,28 @@
+---
+layout: layouts/base.njk
+section: coaches
+permalink: "{% if pagination.pageNumber == 0 %}coaches/index.html{% else %}coaches/{{ pagination.pageNumber }}/index.html{% endif %}"
+pagination:
+  data: coaches
+  size: 5
+---
+<h1>{{ title }}</h1>
+
+{{ content | safe }}
+
+{# <script>window.data = {{ pagination | dump | safe }}</script> #}
+
+<ol>
+  
+  {%- for item in pagination.items | reverse %}
+    <li>
+      <a href="/coaches/{{ item.slug }}/">{{ item.title.rendered }}</li></a>
+    {% if item._embedded and item._embedded["wp:featuredmedia"] and item._embedded["wp:featuredmedia"][0] %}
+      <img src="{{ item._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url }}" alt="{{ item.title.rendered | striptags }}" />
+    {% endif %}
+<script>window.data = {{ item | dump | safe }}</script>
+
+    {{ item.content.rendered | safe }}
+    </li>
+  {% endfor -%}
+</ol>

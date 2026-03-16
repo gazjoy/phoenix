@@ -1,0 +1,25 @@
+---
+title: About us
+metaDescription: This is a sample meta description. If one is not present in your page/post's front matter, the default metadata.description will be used instead.
+date: 2017-01-01T00:00:00.000Z
+permalink: about/index.html
+eleventyNavigation:
+  key: About
+  order: 1
+layout: layouts/base.njk
+section: page
+pagination:
+  data: page-about
+  size: 1
+---
+
+{% set data = pagination.items[0] %}
+<script>window.data = {{ data | dump | safe }}</script>
+
+<h1>{{ data.title.rendered | safe }}</h1>
+
+{% if data._embedded and data._embedded["wp:featuredmedia"] and data._embedded["wp:featuredmedia"][0] %}
+  <img src="{{ data._embedded['wp:featuredmedia'][0].source_url }}" alt="{{ data.title.rendered | striptags }}" />
+{% endif %}
+
+{{ data.content.rendered | safe }}
