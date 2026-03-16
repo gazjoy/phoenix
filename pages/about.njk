@@ -8,12 +8,9 @@ eleventyNavigation:
   order: 1
 layout: layouts/base.njk
 section: page
-pagination:
-  data: page-about
-  size: 1
 ---
 
-{% set data = pagination.items[0] %}
+{% set data = about[0] %}
 <script>window.data = {{ data | dump | safe }}</script>
 
 <h1>{{ data.title.rendered | safe }}</h1>

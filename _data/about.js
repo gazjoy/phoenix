@@ -1,9 +1,9 @@
 const fetch = require("node-fetch");
 
 module.exports = async function () {
-  console.log("Fetching data...");
+  console.log("Fetching about page...");
 
-  return fetch("https://test.cannockswimmingclub.org/wp-json/wp/v2/fundraiser?_embed")
+  return fetch("https://test.cannockswimmingclub.org/wp-json/wp/v2/pages?_embed&slug=about")
     .then((res) => res.json())
     .then((json) => json);
 };

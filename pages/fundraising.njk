@@ -7,23 +7,36 @@ eleventyNavigation:
   order: 1
 layout: layouts/base.njk
 section: page
-tags: fundraising
-pagination:
-  data: fundraisers
-  size: 99
 ---
-{% set data = pagination.items %}
-{# <script>window.data = {{ data | dump | safe }}</script> #}
+
+<script>window.DEBUG_fundraisers = {{ fundraisers | dump | safe }}</script>
+<script>window.DEBUG_fundraising = {{ fundraising | dump | safe }}</script>
+
+<script>window.fundraisers = {{ fundraisers | dump | safe }}</script>
+
+{# Access the combined data #}
+{% set pageData = fundraising.page[0] %}
+{% if pageData %}
+  <h1>{{ pageData.title.rendered | safe }}</h1>
+
+  {# Add the page's featured image if it exists #}
+  {% if pageData._embedded and pageData._embedded["wp:featuredmedia"] and pageData._embedded["wp:featuredmedia"][0] %}
+    <img src="{{ pageData._embedded['wp:featuredmedia'][0].source_url }}" alt="{{ pageData.title.rendered | striptags }}" />
+  {% endif %}
+
+  {# Add the page's main content #}
+  {{ pageData.content.rendered | safe }}
+{% endif %}
 
 <h1>{{ title }}</h1>
-<h1>{{ data.title.rendered | safe }}</h1>
 
-{{ data.content.rendered | safe }}
 
+{# List of fundraisers #}
+<script>window.data = {{ fundraising.fundraisers | dump | safe }}</script>
 <ol>
-  {%- for item in data %}
+  {%- for item in fundraising.fundraisers %}
   <li>
-    <script>window.data = {{ item | dump | safe }}</script>
+    {# {{ item | dump | safe }} #}
     <h3>{{ item.acf.name }}</h3>
     {{ item.content.rendered | safe }}
     
@@ -36,13 +49,3 @@ pagination:
   </li>
   {% endfor %}
 </ol>
-
-<!-- why is this not working? -->
-<!-- https://egghead.io/lessons/11ty-define-an-eleventy-11ty-collection-to-create-a-blog
-<ul>
-  {% for fundraiser in collections.fundraising %} 
-    <li>
-      <a href="{{ fundraiser.url }}">{{ fundraiser.data.title }}</a>
-    </li>
-  {% endfor %}
-</ul>

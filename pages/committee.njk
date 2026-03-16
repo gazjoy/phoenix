@@ -1,0 +1,28 @@
+---
+title: Committee
+permalink: committee/index.html
+eleventyNavigation:
+  key: Committee
+  order: 10
+layout: layouts/base.njk
+section: page
+---
+
+<script>window.DEBUG_fundraisers = {{ fundraisers | dump | safe }}</script>
+<script>window.DEBUG_fundraising = {{ fundraising | dump | safe }}</script>
+
+<script>window.fundraisers = {{ fundraisers | dump | safe }}</script>
+
+{# Access the combined data #}
+{% set pageData = committee[0] %}
+{% if pageData %}
+  <h1>{{ pageData.title.rendered | safe }}</h1>
+
+  {# Add the page's featured image if it exists #}
+  {% if pageData._embedded and pageData._embedded["wp:featuredmedia"] and pageData._embedded["wp:featuredmedia"][0] %}
+    <img src="{{ pageData._embedded['wp:featuredmedia'][0].source_url }}" alt="{{ pageData.title.rendered | striptags }}" />
+  {% endif %}
+
+  {# Add the page's main content #}
+  {{ pageData.content.rendered | safe }}
+{% endif %}
