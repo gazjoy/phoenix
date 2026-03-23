@@ -1,5 +1,3 @@
-const fetch = require("node-fetch");
-
 module.exports = async function () {
     console.log("Fetching committee page...");
     

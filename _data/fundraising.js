@@ -1,5 +1,3 @@
-const fetch = require("node-fetch");
-
 module.exports = async function () {
   // console.log("Fetching data...");
 
@@ -7,7 +5,7 @@ module.exports = async function () {
   //   .then((res) => res.json())
   //   .then((json) => json);
 
-    console.log("Fetching fundraising page and fundraisers...");
+  console.log("Fetching fundraising page and fundraisers...");
 
   // Fetch the about page (or later, the fundraising page)
   const pageResponse = await fetch("https://test.cannockswimmingclub.org/wp-json/wp/v2/pages?_embed&slug=fundraising");
