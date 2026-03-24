@@ -4,6 +4,7 @@ const CleanCSS = require("clean-css");
 const UglifyJS = require("uglify-js");
 // const htmlmin = require("html-minifier");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
+const { documentToHtmlString } = require('@contentful/rich-text-html-renderer');
 
 module.exports = function(eleventyConfig) {
 
@@ -41,6 +42,16 @@ module.exports = function(eleventyConfig) {
   //     return coll;
   //   }, {});
   // });
+
+  // Contentful rich text
+  eleventyConfig.addFilter('renderRichTextAsHtml', (value) => {
+    return documentToHtmlString(value);
+  });
+
+  // Dump as JSON
+  eleventyConfig.addFilter('dump', (value) => {
+    return JSON.stringify(value, null, 2);
+  });
 
   // Date formatting (human readable)
   eleventyConfig.addFilter("readableDate", dateObj => {

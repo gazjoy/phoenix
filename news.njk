@@ -1,0 +1,18 @@
+---json
+{
+  "layout": "layouts/base.njk",
+  "pagination": {
+    "data": "news",
+    "size": 1,
+    "alias": "newsPost"
+  },
+  "permalink": "news/{{newsPost.slug}}/"
+}
+---
+
+<h1>{{ newsPost.title }}</h1>
+
+<p>Date: {{ newsPost.dateIsoString | readableDate }}</p>
+<p>Author: {{ newsPost.authorName }}</p>
+
+{{ newsPost.bodyRichText | renderRichTextAsHtml | safe }}
