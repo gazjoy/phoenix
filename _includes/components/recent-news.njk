@@ -15,7 +15,7 @@
 		{{ newsPost.bodyRichText | renderRichTextAsHtml | safe }}
 			
 		<p>
-			<small>{{ newsPost.dateIsoString | readableDate }} by {{ newsPost.authorName }}</small>
+			<small>{{ newsPost.date | readableDate }} by {{ newsPost.authorName }}</small>
 		</p>
 
 	{% endfor %}

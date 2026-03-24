@@ -12,7 +12,7 @@
 
 <h1>{{ newsPost.title }}</h1>
 
-<p>Date: {{ newsPost.dateIsoString | readableDate }}</p>
+<p>Date: {{ newsPost.date | readableDate }}</p>
 <p>Author: {{ newsPost.authorName }}</p>
 
 {{ newsPost.bodyRichText | renderRichTextAsHtml | safe }}
